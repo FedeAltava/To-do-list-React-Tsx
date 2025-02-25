@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import "./TaskList.css";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Task } from "../interfaces/Task";
+import { TaskItem } from "./TaskItem";
 export const TaskList = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
   const { register, handleSubmit, reset } = useForm<Task>();
@@ -34,6 +36,12 @@ export const TaskList = () => {
         {...register("description")}/>
         <button type="submit">Add</button>
       </form>
+
+      <div>
+        {tasks.map((task:Task)=>{
+          return <TaskItem task={task} key={task.id}/>
+        })}
+      </div>
     </div>
   );
 };
