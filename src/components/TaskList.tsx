@@ -1,25 +1,39 @@
-import React, { useState } from "react"
-import {Task} from '../interfaces/Task'
-export const TaskList = ()=>{
-    const [tasks , setTasks] = useState<Task[]>([]);
+import React, { useState } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { Task } from "../interfaces/Task";
+export const TaskList = () => {
+  const [tasks, setTasks] = useState<Task[]>([]);
+  const { register, handleSubmit, reset } = useForm<Task>();
 
-    const handleAddTask=(e:React.FormEvent)=>{
-        e.preventDefault(); //evita que el form recargue la pagina.
-
-        if(!)
+  const onSubmit: SubmitHandler<Task> = (data) => {
+    if (!data.title.trim()) {
+      alert("El titulo no puede estar vacio!");
+      return;
     }
-    
-    return(
-        <div>
-            <form action="">
-                <label htmlFor="">Title</label>
-                <input type="text" />
-                <label htmlFor="">Description</label>
-                <input type="text" />
-                <label htmlFor="">completed</label>
-                <input type="checkBox" />
-                <button type ="submit" >Add</button>
-            </form>
-        </div>
-    );
-}
+
+    const newTask: Task = {
+      id: Date.now().toString(),
+      title: data.title,
+      description: data.description || undefined,
+      completed: false,
+    };
+
+    setTasks([...tasks,newTask]);
+    reset(); //limpia el formualrio
+  };
+
+  return (
+    <div>
+      <form action="" onSubmit={handleSubmit(onSubmit)}>
+        <label htmlFor="">Titulo</label>
+        <input type="text" 
+        placeholder="Titulo de la tarea"
+        {...register ("title",{required:"Titulo obligatorio"})}/>
+        <label htmlFor="">Description</label>
+        <input type="text" placeholder="Descripcion"
+        {...register("description")}/>
+        <button type="submit">Add</button>
+      </form>
+    </div>
+  );
+};
