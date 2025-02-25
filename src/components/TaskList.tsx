@@ -18,7 +18,7 @@ export const TaskList = ()=>{
                 <input type="text" />
                 <label htmlFor="">completed</label>
                 <input type="checkBox" />
-                <button type ="submit" onClick={handleAddTask}>Add</button>
+                <button type ="submit" >Add</button>
             </form>
         </div>
     );
