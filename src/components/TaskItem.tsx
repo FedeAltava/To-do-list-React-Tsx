@@ -6,7 +6,7 @@ export const TaskItem =({ task }: { task: Task })=>{
     return(
         <div>
             <div className="cardTask">
-                <h1> Titulo: {title}</h1>
+                <h3> Titulo: {title}</h3>
                 <p> Descripción: {description}</p>
                 {completed && <p>Completada</p>}
                 <p>Fecha de creacion: {formattedDate}</p>

@@ -26,8 +26,9 @@ export const TaskList = () => {
 
   return (
     <div>
+      <h1>ToDo-list</h1>
       <form action="" onSubmit={handleSubmit(onSubmit)}>
-        <div>
+        <div className="title">
           <label htmlFor="">Titulo</label>
           <input
             type="text"
@@ -35,7 +36,7 @@ export const TaskList = () => {
             {...register("title", { required: "Titulo obligatorio" })}
           />
         </div>
-        <div>
+        <div className="description">
           <label htmlFor="">Descripción</label>
           <input
             type="text-area"
@@ -43,8 +44,9 @@ export const TaskList = () => {
             {...register("description")}
           />
         </div>
-
-        <button type="submit">Agregar</button>
+        <div className="buttonDiv">
+          <button type="submit">Agregar</button>
+        </div>
       </form>
 
       <div>
