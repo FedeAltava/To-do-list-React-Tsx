@@ -20,26 +20,36 @@ export const TaskList = () => {
       completed: false,
     };
 
-    setTasks([...tasks,newTask]);
+    setTasks([...tasks, newTask]);
     reset(); //limpia el formualrio
   };
 
   return (
     <div>
       <form action="" onSubmit={handleSubmit(onSubmit)}>
-        <label htmlFor="">Titulo</label>
-        <input type="text" 
-        placeholder="Titulo de la tarea"
-        {...register ("title",{required:"Titulo obligatorio"})}/>
-        <label htmlFor="">Description</label>
-        <input type="text" placeholder="Descripcion"
-        {...register("description")}/>
-        <button type="submit">Add</button>
+        <div>
+          <label htmlFor="">Titulo</label>
+          <input
+            type="text"
+            placeholder="Titulo de la tarea"
+            {...register("title", { required: "Titulo obligatorio" })}
+          />
+        </div>
+        <div>
+          <label htmlFor="">Descripción</label>
+          <input
+            type="text-area"
+            placeholder="Descripcion"
+            {...register("description")}
+          />
+        </div>
+
+        <button type="submit">Agregar</button>
       </form>
 
       <div>
-        {tasks.map((task:Task)=>{
-          return <TaskItem task={task} key={task.id}/>
+        {tasks.map((task: Task) => {
+          return <TaskItem task={task} key={task.id} />;
         })}
       </div>
     </div>

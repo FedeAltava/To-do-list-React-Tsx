@@ -1,0 +1,12 @@
+.cardTask{
+    border-radius: 10px;
+    border: 2px solid black;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.cardTask:hover{
+    box-shadow:
+    0 0 0 2px rgb(255, 255, 255),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+}
