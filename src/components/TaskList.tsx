@@ -30,6 +30,13 @@ export const TaskList = () => {
       )
     );
   };
+  const deleteTask = (id:number | string)=>{
+    setTasks((prevTasks)=>
+      prevTasks.filter((task)=>{
+        return task.id != id
+      })
+    )
+  }
   return (
     <div>
       <h1>ToDo-list</h1>
@@ -59,7 +66,7 @@ export const TaskList = () => {
 
       <div>
         {tasks.map((task: Task) => {
-          return <TaskItem task={task} key={task.id} toggleCompletion={toggleCompletion}/>;
+          return <TaskItem task={task} key={task.id} toggleCompletion={toggleCompletion} deleteTask={deleteTask}/>;
         })}
       </div>
     </div>
