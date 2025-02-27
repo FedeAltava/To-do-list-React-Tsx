@@ -38,3 +38,12 @@ h1{
     background-color: antiquewhite;
     border-radius: 20px;
 }
+.delete{
+    background-color: rgb(172, 21, 21);
+    color:white;
+    margin-left: 5px;
+}
+.delete:hover{
+    background-color: rgb(255, 8, 8);
+    color:white
+}

@@ -23,23 +23,31 @@ export const TaskList = () => {
     setTasks([...tasks, newTask]);
     reset(); //limpia el formualrio
   };
-
+  const toggleCompletion = (id: number | string) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === id ? { ...task, completed: !task.completed } : task
+      )
+    );
+  };
   return (
     <div>
       <h1>ToDo-list</h1>
       <form action="" onSubmit={handleSubmit(onSubmit)}>
         <div className="title">
-          <label htmlFor="">Titulo</label>
+          <label htmlFor="title">Titulo</label>
           <input
+            id="title"
             type="text"
             placeholder="Titulo de la tarea"
             {...register("title", { required: "Titulo obligatorio" })}
           />
         </div>
         <div className="description">
-          <label htmlFor="">Descripción</label>
+          <label htmlFor="description">Descripción</label>
           <input
-            type="text-area"
+          id="description"
+            type="text"
             placeholder="Descripcion"
             {...register("description")}
           />
@@ -51,7 +59,7 @@ export const TaskList = () => {
 
       <div>
         {tasks.map((task: Task) => {
-          return <TaskItem task={task} key={task.id} />;
+          return <TaskItem task={task} key={task.id} toggleCompletion={toggleCompletion}/>;
         })}
       </div>
     </div>
