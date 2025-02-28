@@ -23,6 +23,7 @@ export const TaskList = () => {
     setTasks([...tasks, newTask]);
     reset(); //limpia el formualrio
   };
+
   const toggleCompletion = (id: number | string) => {
     setTasks((prevTasks) =>
       prevTasks.map((task) =>
@@ -30,6 +31,7 @@ export const TaskList = () => {
       )
     );
   };
+
   const deleteTask = (id:number | string)=>{
     setTasks((prevTasks)=>
       prevTasks.filter((task)=>{
@@ -37,6 +39,7 @@ export const TaskList = () => {
       })
     )
   }
+
   return (
     <div>
       <h1>ToDo-list</h1>
@@ -72,3 +75,4 @@ export const TaskList = () => {
     </div>
   );
 };
+  
